@@ -35,7 +35,13 @@ export const fetchUserOrders = async (user) => {
     const url = 'http://localhost:3000/orders/user/' + user.userId;
 
     try{
-        const response = await fetch(url);
+
+        const response = await fetch(url, {
+            method: 'GET',
+            headers:{
+                'Authorization': user && user.token ? `Bearer ${user.token}`: ''
+            },
+        });
         const json = await response.json();
         return json;
     }

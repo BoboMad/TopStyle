@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import ShoppingCartComponent from './ShoppingCartComponent';
 import { Link } from 'react-router-dom';

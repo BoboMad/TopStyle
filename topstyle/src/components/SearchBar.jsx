@@ -1,5 +1,5 @@
-import {Form, Col, Button, Container} from 'react-bootstrap'
-import React, {useContext, useState} from 'react'
+import {Form, Col, Container} from 'react-bootstrap'
+import React, {useContext} from 'react'
 import { AppContext } from '../ContextApi/AppProvider';
 
 const SearchBar = () => {

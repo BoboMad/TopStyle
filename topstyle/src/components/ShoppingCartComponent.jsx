@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, { useContext} from 'react';
 import {AppContext} from '../ContextApi/AppProvider';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import {Link } from "react-router-dom";
