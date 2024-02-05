@@ -1,13 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {useParams, Link} from 'react-router-dom';
 import { Container,Row,Col, Nav,Image,Button } from 'react-bootstrap'
 import { AppContext } from '../ContextApi/AppProvider';
 import QuantityControl from './QuantityControl'
 
 const ProductDetailView = () => {
-    const {products, AddProductToCart, cart, IncreaseProductQuantity, DecreaseProductQuantity} = useContext(AppContext);
+    const {GetAllProducts, products, AddProductToCart, cart, IncreaseProductQuantity, DecreaseProductQuantity} = useContext(AppContext);
     const { productId } = useParams();
 
+    useEffect(()=>{
+        if(products.length === 0)
+            GetAllProducts();
+    }, [GetAllProducts, products])
     const isProductInCart = cart.some(product => product._id === productId)
     const productDetails = products.find(product => product._id === productId);
 
@@ -18,6 +22,7 @@ const ProductDetailView = () => {
 
     return (
     <Container className='w-75'>
+        {productDetails ? (
         <Row>
             <Container className='w-50'>
                 <Col><Image src={productDetails.productImage} fluid/></Col>
@@ -40,7 +45,11 @@ const ProductDetailView = () => {
                     <Nav.Link as={Link} to='/' className='my-5'>&lt; Back to products</Nav.Link>
                 </Col>
             </Container>
-        </Row>
+        </Row>) 
+        :
+        (<div>Loading...</div>)
+        }
+        
     </Container>
   )
 }
