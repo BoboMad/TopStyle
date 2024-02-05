@@ -12,6 +12,7 @@ const ProductDetailView = () => {
         if(products.length === 0)
             GetAllProducts();
     }, [GetAllProducts, products])
+    
     const isProductInCart = cart.some(product => product._id === productId)
     const productDetails = products.find(product => product._id === productId);
 
